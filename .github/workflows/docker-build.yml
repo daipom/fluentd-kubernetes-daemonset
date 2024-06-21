@@ -2,6 +2,11 @@ name: Publish Docker Image
 
 on:
   push:
+    branches:
+      - main
+      - v1.16
+    tags:
+      - v1.*
 
 jobs:
   build:
