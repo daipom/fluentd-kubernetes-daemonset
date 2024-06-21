@@ -19,7 +19,6 @@ jobs:
         context:
           - docker-image/v1.16/arm64/debian-azureblob
           - docker-image/v1.16/arm64/debian-cloudwatch
-          # - docker-image/v1.16/arm64/debian-elasticsearch6
           - docker-image/v1.16/arm64/debian-elasticsearch7
           - docker-image/v1.16/arm64/debian-elasticsearch8
           - docker-image/v1.16/arm64/debian-forward
@@ -34,7 +33,6 @@ jobs:
           - docker-image/v1.16/arm64/debian-opensearch
           - docker-image/v1.16/arm64/debian-papertrail
           - docker-image/v1.16/arm64/debian-s3
-          # - docker-image/v1.16/arm64/debian-stackdriver
           - docker-image/v1.16/arm64/debian-syslog
 
     steps:
