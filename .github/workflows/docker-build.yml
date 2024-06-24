@@ -14,6 +14,21 @@ jobs:
         context:
           - docker-image/v1.16/arm64/debian-azureblob
           - docker-image/v1.16/arm64/debian-cloudwatch
+          - docker-image/v1.16/arm64/debian-elasticsearch7
+          - docker-image/v1.16/arm64/debian-elasticsearch8
+          - docker-image/v1.16/arm64/debian-forward
+          - docker-image/v1.16/arm64/debian-gcs
+          - docker-image/v1.16/arm64/debian-graylog
+          - docker-image/v1.16/arm64/debian-kafka
+          - docker-image/v1.16/arm64/debian-kafka2
+          - docker-image/v1.16/arm64/debian-kinesis
+          - docker-image/v1.16/arm64/debian-logentries
+          - docker-image/v1.16/arm64/debian-loggly
+          - docker-image/v1.16/arm64/debian-logzio
+          - docker-image/v1.16/arm64/debian-opensearch
+          - docker-image/v1.16/arm64/debian-papertrail
+          - docker-image/v1.16/arm64/debian-s3
+          - docker-image/v1.16/arm64/debian-syslog
 
     steps:
       - uses: actions/checkout@v4
