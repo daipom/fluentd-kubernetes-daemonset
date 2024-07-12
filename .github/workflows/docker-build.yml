@@ -31,11 +31,9 @@ jobs:
         "debian-syslog"
         ]'
     outputs:
-      if: ${{ steps.arrange-components.outputs.for_all == 'true' }}
-      components: ${{ env.ALL_COMPONENTS }}
-    outputs:
-      if: ${{ steps.arrange-components.outputs.for_all != 'true' }}
-      components: format('["{0}""]', ${{ steps.arrange-components.outputs.component }})
+      components: >
+        ${{ steps.arrange-components.outputs.for_all == 'true' && env.ALL_COMPONENTS
+        || format('["{0}""]', ${{ steps.arrange-components.outputs.component }}) }}
     steps:
       - id: arrange-components
         run: |
