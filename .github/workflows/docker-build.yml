@@ -44,7 +44,7 @@ jobs:
               echo "component=$component" >> "$GITHUB_OUTPUT"
               break
             fi
-          end
+          done
   amd64:
     needs: define-matrix
     runs-on: ubuntu-latest
