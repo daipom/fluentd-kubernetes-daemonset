@@ -9,9 +9,7 @@ jobs:
   define-matrix:
     runs-on: ubuntu-latest
     env:
-      ARRAY:
-        - debian-azureblob
-        - debian-cloudwatch
+      ARRAY: ${{ fromJSON('["debian-azureblob", "debian-cloudwatch"]') }}
     outputs:
       components: ${{ steps.set-components.outputs.components }}
     steps:
