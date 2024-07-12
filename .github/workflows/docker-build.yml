@@ -8,11 +8,16 @@ env:
 jobs:
   define-matrix:
     runs-on: ubuntu-latest
+    env:
+      ARRAY:
+        - debian-azureblob
+        - debian-cloudwatch
     outputs:
       components: ${{ steps.set-components.outputs.components }}
     steps:
       - id: set-components
         run: |
+          echo ${{ env.ARRAY }}
           components=$(echo '[
             "debian-azureblob",
             "debian-cloudwatch",
