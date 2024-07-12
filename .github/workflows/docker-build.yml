@@ -9,8 +9,8 @@ jobs:
   define-matrix:
     runs-on: ubuntu-latest
     env:
-      TEST_TAG: v1.17.0-debian-azureblob-amd64-1.1
-      # ALL_COMPONENTS: '["debian-azureblob", "debian-cloudwatch"]'
+      # TEST_TAG: v1.17.0-debian-azureblob-amd64-1.1
+      TEST_TAG: v1.17.0-1.1
       ALL_COMPONENTS: >
         [
         "debian-azureblob",
