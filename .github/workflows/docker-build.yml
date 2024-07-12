@@ -16,6 +16,8 @@ jobs:
       - id: set-components
         run: |
           echo ${{ env.ARRAY }}
+          echo ${{ fromJSON(env.ARRAY) }}
+          echo ${{ contains(env.ARRAY, 'debian-azureblob') }}
           components=$(echo '[
             "debian-azureblob",
             "debian-cloudwatch",
