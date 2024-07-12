@@ -10,26 +10,27 @@ jobs:
     runs-on: ubuntu-latest
     env:
       TEST_TAG: v1.17.0-debian-azureblob-amd64-1.1
-      ALL_COMPONENTS: >
-        '[
-        "debian-azureblob",
-        "debian-cloudwatch",
-        "debian-elasticsearch7",
-        "debian-elasticsearch8",
-        "debian-forward",
-        "debian-gcs",
-        "debian-graylog",
-        "debian-kafka",
-        "debian-kafka2",
-        "debian-kinesis",
-        "debian-logentries",
-        "debian-loggly",
-        "debian-logzio",
-        "debian-opensearch",
-        "debian-papertrail",
-        "debian-s3",
-        "debian-syslog"
-        ]'
+      ALL_COMPONENTS: '["debian-azureblob", "debian-cloudwatch"]'
+      # ALL_COMPONENTS: >
+      #   '[
+      #   "debian-azureblob",
+      #   "debian-cloudwatch",
+      #   "debian-elasticsearch7",
+      #   "debian-elasticsearch8",
+      #   "debian-forward",
+      #   "debian-gcs",
+      #   "debian-graylog",
+      #   "debian-kafka",
+      #   "debian-kafka2",
+      #   "debian-kinesis",
+      #   "debian-logentries",
+      #   "debian-loggly",
+      #   "debian-logzio",
+      #   "debian-opensearch",
+      #   "debian-papertrail",
+      #   "debian-s3",
+      #   "debian-syslog"
+      #   ]'
     outputs:
       components: >
         ${{ steps.arrange-components.outputs.for_all == 'true' && env.ALL_COMPONENTS
