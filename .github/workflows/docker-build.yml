@@ -11,7 +11,7 @@ jobs:
     env:
       ARRAY: '["debian-azureblob", "debian-cloudwatch"]'
     outputs:
-      components: ${{ fromJSON(env.ARRAY) }}
+      components: ${{ env.ARRAY }}
     steps:
       - id: set-components
         run: |
