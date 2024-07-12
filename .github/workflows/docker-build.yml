@@ -33,7 +33,7 @@ jobs:
     outputs:
       components: >
         ${{ steps.arrange-components.outputs.for_all == 'true' && env.ALL_COMPONENTS
-        || format('["{0}""]', ${{ steps.arrange-components.outputs.component }}) }}
+        || format('["{0}"]', steps.arrange-components.outputs.component) }}
     steps:
       - id: arrange-components
         run: |
