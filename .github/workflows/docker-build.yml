@@ -9,15 +9,44 @@ jobs:
   define-matrix:
     runs-on: ubuntu-latest
     env:
-      ARRAY: '["debian-azureblob", "debian-cloudwatch"]'
+      TEST_TAG: v1.17.0-debian-azureblob-amd64-1.1
+      ALL_COMPONENTS: >
+        '[
+        "debian-azureblob",
+        "debian-cloudwatch",
+        "debian-elasticsearch7",
+        "debian-elasticsearch8",
+        "debian-forward",
+        "debian-gcs",
+        "debian-graylog",
+        "debian-kafka",
+        "debian-kafka2",
+        "debian-kinesis",
+        "debian-logentries",
+        "debian-loggly",
+        "debian-logzio",
+        "debian-opensearch",
+        "debian-papertrail",
+        "debian-s3",
+        "debian-syslog"
+        ]'
     outputs:
-      components: ${{ env.ARRAY }}
+      if: ${{ steps.arrange-components.outputs.for_all == 'true' }}
+      components: ${{ env.ALL_COMPONENTS }}
+    outputs:
+      if: ${{ steps.arrange-components.outputs.for_all != 'true' }}
+      components: format('["{0}""]', ${{ steps.arrange-components.outputs.component }})
     steps:
-      - id: set-components
+      - id: arrange-components
         run: |
-          echo ${{ env.ARRAY }}
-          echo ${{ fromJSON(env.ARRAY) }}
-          echo ${{ contains(env.ARRAY, 'debian-forward') }}
+          echo "for_all=true" >> "$GITHUB_OUTPUT"
+          for component in ${{ join(fromJSON(env.ALL_COMPONENTS), ' ') }}; do
+            if [[ ${{ env.TEST_TAG }} == *"$component"* ]]; then
+              echo "for_all=false" >> "$GITHUB_OUTPUT"
+              echo "component=$component" >> "$GITHUB_OUTPUT"
+              break
+            fi
+          end
   amd64:
     needs: define-matrix
     runs-on: ubuntu-latest
